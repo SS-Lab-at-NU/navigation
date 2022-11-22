@@ -6,15 +6,12 @@ Panels:
       Expanded:
         - /TF1/Frames1
         - /TF1/Tree1
-        - /LaserScan1
+        - /Map1
+        - /Global Map1
         - /Global Map1/Costmap1
-        - /Global Map1/Planner1
-        - /Local Map1
         - /Local Map1/Polygon1
         - /Local Map1/Costmap1
         - /Local Map1/Planner1
-        - /MapCloud1
-        - /OccupancyMap1
         - /PointCloud21
       Splitter Ratio: 0.5
     Tree Height: 397
@@ -34,7 +31,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: PointCloud2
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -136,10 +133,50 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
+        base_scan:
+          Value: true
+        camera_accel_frame:
+          Value: false
+        camera_accel_optical_frame:
+          Value: false
+        camera_aligned_depth_to_color_frame:
+          Value: false
+        camera_color_frame:
+          Value: false
+        camera_color_optical_frame:
+          Value: false
+        camera_depth_frame:
+          Value: false
+        camera_depth_optical_frame:
+          Value: false
+        camera_gyro_frame:
+          Value: false
+        camera_imu_optical_frame:
+          Value: false
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
+          Value: true
+        caster_back_left_link:
+          Value: true
+        caster_back_right_link:
+          Value: true
+        imu_link:
+          Value: true
+        map:
+          Value: true
+        odom:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -147,9 +184,28 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        map:
+          odom:
+            camera_link:
+              camera_accel_frame:
+                camera_accel_optical_frame:
+                  {}
+              camera_aligned_depth_to_color_frame:
+                camera_color_optical_frame:
+                  {}
+              camera_color_frame:
+                {}
+              camera_depth_frame:
+                camera_depth_optical_frame:
+                  {}
+              camera_gyro_frame:
+                camera_imu_optical_frame:
+                  {}
+              camera_rgb_frame:
+                camera_rgb_optical_frame:
+                  {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -196,7 +252,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /map
+      Topic: /rtabmap/grid_prob_map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -260,7 +316,7 @@ Visualization Manager:
           Topic: /move_base/DWAPlannerROS/global_plan
           Unreliable: false
           Value: true
-      Enabled: false
+      Enabled: true
       Name: Global Map
     - Class: rviz/Group
       Displays:
@@ -307,7 +363,7 @@ Visualization Manager:
           Topic: /move_base/DWAPlannerROS/local_plan
           Unreliable: false
           Value: true
-      Enabled: false
+      Enabled: true
       Name: Local Map
     - Alpha: 1
       Arrow Length: 0.05000000074505806
@@ -315,7 +371,7 @@ Visualization Manager:
       Axes Radius: 0.009999999776482582
       Class: rviz/PoseArray
       Color: 0; 192; 0
-      Enabled: true
+      Enabled: false
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
       Name: Amcl Particles
@@ -325,7 +381,7 @@ Visualization Manager:
       Shape: Arrow (Flat)
       Topic: /particlecloud
       Unreliable: false
-      Value: true
+      Value: false
     - Alpha: 1
       Axes Length: 1
       Axes Radius: 0.10000000149011612
@@ -387,7 +443,7 @@ Visualization Manager:
       Enabled: false
       Max. Octree Depth: 16
       Name: OccupancyMap
-      Octomap Binary Topic: /rtabmap/octomap_full
+      Octomap Binary Topic: /rtabmap/octomap_binary
       Unreliable: false
       Use Timestamp: false
       Value: false
@@ -443,7 +499,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rtabmap_ros/OrbitOriented
-      Distance: 14.271319389343262
+      Distance: 4.280516624450684
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -459,9 +515,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.424796998500824
+      Pitch: 0.5347970724105835
       Target Frame: <Fixed Frame>
-      Yaw: 0.36500078439712524
+      Yaw: 3.1950085163116455
     Saved: ~
 Window Geometry:
   Displays:
@@ -482,4 +538,4 @@ Window Geometry:
     collapsed: false
   Width: 1368
   X: 72
-  Y: 27
+  Y: 0
